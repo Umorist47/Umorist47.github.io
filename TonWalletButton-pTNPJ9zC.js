@@ -8134,7 +8134,7 @@ function getUserAgent() {
         Y = "macos";
         break;
     case V === "linux":
-        Y = "linux";
+        Y = "android";
         break;
     case (V == null ? void 0 : V.includes("windows")):
         Y = "windows";
@@ -8933,7 +8933,7 @@ const maxWidth = {
 function isDevice(R) {
     const $ = getWindow$1();
     if (!$)
-        return R === "mobile";
+        return R === "desktop";
     if (isTmaPlatform("weba"))
         return !0;
     const W = $.innerWidth;
