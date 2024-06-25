@@ -8939,9 +8939,9 @@ function isDevice(R) {
     const W = $.innerWidth;
     switch (R) {
     case "desktop":
-        return W > maxWidth.tablet;
+        return W <= maxWidth.mobile || isOS("ios", "android", "ipad");
     case "tablet":
-        return W > maxWidth.mobile;
+        return W <= maxWidth.mobile || isOS("ios", "android", "ipad");
     default:
     case "mobile":
         return W <= maxWidth.mobile || isOS("ios", "android", "ipad")
