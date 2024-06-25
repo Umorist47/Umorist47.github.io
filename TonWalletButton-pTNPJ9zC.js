@@ -16483,8 +16483,7 @@ class TonConnectUI {
     }
 }
 function isMobileDevice() {
-    const R = Telegram.WebApp.platform;
-    return R === "android" || R === "ios"
+    return R === "android"
 }
 function isTouchDevice() {
     return "ontouchstart" in window || navigator.maxTouchPoints > 0
