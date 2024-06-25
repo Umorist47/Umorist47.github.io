@@ -1,15 +1,3 @@
-
-de4js1.12.0
-JavaScript Deobfuscator and Unpacker
-View on GitHub
-String
-Local File
-Remote File
-None Eval Array Obfuscator IO _Number JSFuck JJencode AAencode URLencode Packer JS Obfuscator My Obfuscate Wise Eval Wise Function Clean Source Unreadable
-Line numbers Format Code Unescape strings Recover object-path Execute expression Merge strings Remove grouping
-Download file
-Open in new tab
-
 var Mn = Object.defineProperty;
 var Ln = (R, $, W) => $ in R ? Mn(R, $, {
     enumerable: !0,
@@ -17716,13 +17704,3 @@ const loadingContent = "_loadingContent_t1zxm_1",
 export {
     AppContext as A, F$1 as F, GameConf as G, L, O, T, _$2 as _, useOnMount as a, LoadingView as b, check as c, TonWalletButton as d, useSignal as e, ApiError as f, g$2 as g, h$1 as h, isScreenIsLocked as i, isMobileDevice as j, appContextValue as k, lockPage as l, q$1 as m, AppLog as n, TapokAPI as o, p$3 as p, q, AccountModel as r, checked as s, time as t, u, a$1 as v, TonConnectUI as w
 };
-
-Sponsors
-
-Secure stores, happy shoppers. We are Sansec.
-Credits
-
-Project maintained by lelinhtinh
-Hosted on GitHub Pages
-
-Icons made by Eucalyp
