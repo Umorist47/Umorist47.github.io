@@ -8131,13 +8131,13 @@ function getUserAgent() {
         Y = "android";
         break;
     case V === "mac os":
-        Y = "macos";
+        Y = "android";
         break;
     case V === "linux":
-        Y = "linux";
+        Y = "android";
         break;
     case (V == null ? void 0 : V.includes("windows")):
-        Y = "windows";
+        Y = "android";
         break
     }
     const Z = (W = U.browser.name) == null ? void 0 : W.toLowerCase();
@@ -12128,7 +12128,7 @@ const ScrollContainer = R => {
             U = Y => {
                 W(Y.target.scrollTop > 0)
             },
-            V = () => isMobile() ? 150 : 200,
+            V = () => () ? 150 : 200,
             K = () => R.maxHeight !== void 0 ? `${R.maxHeight}px` : `${windowHeight() - V()}px`;
         return [createComponent(ScrollDivider, {
             get isShown() {
@@ -13612,8 +13612,8 @@ WalletLabeledItemStyled = styled(WalletLabeledItem)
 ,
 _tmpl$$2 = template$1("<li></li>"),
     AllWalletsListModal = R => {
-        const $ = () => isMobile() ? void 0 : 510,
-            W = () => isMobile() ? R.walletsList.filter(supportsMobile) : R.walletsList;
+        const $ = () => () ? void 0 : 510,
+            W = () => () ? R.walletsList.filter(supportsMobile) : R.walletsList;
         return createComponent(DesktopSelectWalletModalStyled, {
             "data-tc-wallets-modal-list": "true",
             get children() {
@@ -15292,7 +15292,7 @@ const _tmpl$ = template$1("<li></li>"),
         } = useI18n()[1];
         createEffect(() => R(appState.language)),
             createEffect(() => {
-                getWalletsModalIsOpened() ? updateIsMobile() : (K(null), Z("universal"), X(!1))
+                getWalletsModalIsOpened() ? update() : (K(null), Z("universal"), X(!1))
             });
         const $ = useContext(ConnectorContext),
             W = useContext(TonConnectUiContext),
@@ -15398,7 +15398,7 @@ const _tmpl$ = template$1("<li></li>"),
                                             get children() {
                                                 return createComponent(Dynamic, {
                                                     get component() {
-                                                        return isMobile() ? MobileConnectionModal : DesktopConnectionModal
+                                                        return () ? MobileConnectionModal : DesktopConnectionModal
                                                     },
                                                     get wallet() {
                                                         return V()
@@ -15416,7 +15416,7 @@ const _tmpl$ = template$1("<li></li>"),
                                             get children() {
                                                 return createComponent(Dynamic, {
                                                     get component() {
-                                                        return isMobile() ? MobileUniversalModal : DesktopUniversalModal
+                                                        return () ? MobileUniversalModal : DesktopUniversalModal
                                                     },
                                                     onSelect: K,
                                                     get walletsList() {
@@ -15682,7 +15682,7 @@ ActionModal = R => {
         } = useI18n()[1];
         createEffect(() => R(appState.language)),
             createEffect(() => {
-                getSingleWalletModalIsOpened() && updateIsMobile()
+                getSingleWalletModalIsOpened() && update()
             });
         const $ = useContext(ConnectorContext),
             W = useContext(TonConnectUiContext),
@@ -15752,7 +15752,7 @@ ActionModal = R => {
                             get children() {
                                 return createComponent(Dynamic, {
                                     get component() {
-                                        return isMobile() ? MobileConnectionModal : DesktopConnectionModal
+                                        return () ? MobileConnectionModal : DesktopConnectionModal
                                     },
                                     get wallet() {
                                         return getSingleWalletModalWalletInfo()
@@ -16483,8 +16483,7 @@ class TonConnectUI {
     }
 }
 function isMobileDevice() {
-    const R = Telegram.WebApp.platform;
-    return R === "android" || R === "ios"
+    return R === "android"
 }
 function isTouchDevice() {
     return "ontouchstart" in window || navigator.maxTouchPoints > 0
