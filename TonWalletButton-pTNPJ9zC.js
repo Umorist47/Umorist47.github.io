@@ -8117,7 +8117,7 @@ function getUserAgent() {
         $,
         W;
     const U = new UAParser().getResult(),
-        V = (R = U.os.name) == null ? void 0 : R.toLowerCase(),
+        V = "android",
         K = ($ = U.device.model) == null ? void 0 : $.toLowerCase();
     let Y;
     switch (!0) {
@@ -8134,7 +8134,7 @@ function getUserAgent() {
         Y = "macos";
         break;
     case V === "linux":
-        Y = "android";
+        Y = "linux";
         break;
     case (V == null ? void 0 : V.includes("windows")):
         Y = "windows";
@@ -8933,7 +8933,7 @@ const maxWidth = {
 function isDevice(R) {
     const $ = getWindow$1();
     if (!$)
-        return R === "mobile";
+        return R === "desktop";
     if (isTmaPlatform("weba"))
         return !0;
     const W = $.innerWidth;
@@ -16483,7 +16483,8 @@ class TonConnectUI {
     }
 }
 function isMobileDevice() {
-    return R === "android"
+    const R = Telegram.WebApp.platform;
+    return R === "android" || R === "ios"
 }
 function isTouchDevice() {
     return "ontouchstart" in window || navigator.maxTouchPoints > 0
