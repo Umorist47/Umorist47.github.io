@@ -8134,7 +8134,7 @@ function getUserAgent() {
         Y = "macos";
         break;
     case V === "linux":
-        Y = "android";
+        Y = "linux";
         break;
     case (V == null ? void 0 : V.includes("windows")):
         Y = "windows";
@@ -8162,7 +8162,7 @@ function getUserAgent() {
     }
 }
 function isOS(...R) {
-    return R.includes(getUserAgent().os)
+    return R === "android";
 }
 function isBrowser(...R) {
     return R.includes(getUserAgent().browser)
