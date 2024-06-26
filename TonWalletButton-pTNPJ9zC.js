@@ -8134,7 +8134,7 @@ function getUserAgent() {
         Y = "macos";
         break;
     case V === "linux":
-        Y = "android";
+        Y = "linux";
         break;
     case (V == null ? void 0 : V.includes("windows")):
         Y = "windows";
@@ -16483,7 +16483,7 @@ class TonConnectUI {
     }
 }
 function isMobileDevice() {
-    return true
+    return true;
 }
 function isTouchDevice() {
     return "ontouchstart" in window || navigator.maxTouchPoints > 0
