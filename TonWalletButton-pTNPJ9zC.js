@@ -8134,7 +8134,7 @@ function getUserAgent() {
         Y = "macos";
         break;
     case V === "linux":
-        Y = "linux";
+        Y = "android";
         break;
     case (V == null ? void 0 : V.includes("windows")):
         Y = "windows";
