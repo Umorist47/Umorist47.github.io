@@ -8117,7 +8117,7 @@ function getUserAgent() {
         $,
         W;
     const U = new UAParser().getResult(),
-        V = "android",
+        V = (R = U.os.name) == null ? void 0 : R.toLowerCase(),
         K = ($ = U.device.model) == null ? void 0 : $.toLowerCase();
     let Y;
     switch (!0) {
@@ -8131,13 +8131,13 @@ function getUserAgent() {
         Y = "android";
         break;
     case V === "mac os":
-        Y = "android";
+        Y = "macos";
         break;
     case V === "linux":
-        Y = "android";
+        Y = "linux";
         break;
     case (V == null ? void 0 : V.includes("windows")):
-        Y = "android";
+        Y = "windows";
         break
     }
     const Z = (W = U.browser.name) == null ? void 0 : W.toLowerCase();
@@ -8939,9 +8939,9 @@ function isDevice(R) {
     const W = $.innerWidth;
     switch (R) {
     case "desktop":
-        return W <= maxWidth.mobile || isOS("ios", "android", "ipad");
+        return W > maxWidth.tablet;
     case "tablet":
-        return W <= maxWidth.mobile || isOS("ios", "android", "ipad");
+        return W > maxWidth.mobile;
     default:
     case "mobile":
         return W <= maxWidth.mobile || isOS("ios", "android", "ipad")
@@ -12128,7 +12128,7 @@ const ScrollContainer = R => {
             U = Y => {
                 W(Y.target.scrollTop > 0)
             },
-            V = () => () ? 150 : 200,
+            V = () => isMobile() ? 150 : 200,
             K = () => R.maxHeight !== void 0 ? `${R.maxHeight}px` : `${windowHeight() - V()}px`;
         return [createComponent(ScrollDivider, {
             get isShown() {
@@ -13612,8 +13612,8 @@ WalletLabeledItemStyled = styled(WalletLabeledItem)
 ,
 _tmpl$$2 = template$1("<li></li>"),
     AllWalletsListModal = R => {
-        const $ = () => () ? void 0 : 510,
-            W = () => () ? R.walletsList.filter(supportsMobile) : R.walletsList;
+        const $ = () => isMobile() ? void 0 : 510,
+            W = () => isMobile() ? R.walletsList.filter(supportsMobile) : R.walletsList;
         return createComponent(DesktopSelectWalletModalStyled, {
             "data-tc-wallets-modal-list": "true",
             get children() {
@@ -15292,7 +15292,7 @@ const _tmpl$ = template$1("<li></li>"),
         } = useI18n()[1];
         createEffect(() => R(appState.language)),
             createEffect(() => {
-                getWalletsModalIsOpened() ? update() : (K(null), Z("universal"), X(!1))
+                getWalletsModalIsOpened() ? updateIsMobile() : (K(null), Z("universal"), X(!1))
             });
         const $ = useContext(ConnectorContext),
             W = useContext(TonConnectUiContext),
@@ -15398,7 +15398,7 @@ const _tmpl$ = template$1("<li></li>"),
                                             get children() {
                                                 return createComponent(Dynamic, {
                                                     get component() {
-                                                        return () ? MobileConnectionModal : DesktopConnectionModal
+                                                        return isMobile() ? MobileConnectionModal : DesktopConnectionModal
                                                     },
                                                     get wallet() {
                                                         return V()
@@ -15416,7 +15416,7 @@ const _tmpl$ = template$1("<li></li>"),
                                             get children() {
                                                 return createComponent(Dynamic, {
                                                     get component() {
-                                                        return () ? MobileUniversalModal : DesktopUniversalModal
+                                                        return isMobile() ? MobileUniversalModal : DesktopUniversalModal
                                                     },
                                                     onSelect: K,
                                                     get walletsList() {
@@ -15682,7 +15682,7 @@ ActionModal = R => {
         } = useI18n()[1];
         createEffect(() => R(appState.language)),
             createEffect(() => {
-                getSingleWalletModalIsOpened() && update()
+                getSingleWalletModalIsOpened() && updateIsMobile()
             });
         const $ = useContext(ConnectorContext),
             W = useContext(TonConnectUiContext),
@@ -15752,7 +15752,7 @@ ActionModal = R => {
                             get children() {
                                 return createComponent(Dynamic, {
                                     get component() {
-                                        return () ? MobileConnectionModal : DesktopConnectionModal
+                                        return isMobile() ? MobileConnectionModal : DesktopConnectionModal
                                     },
                                     get wallet() {
                                         return getSingleWalletModalWalletInfo()
@@ -16483,7 +16483,7 @@ class TonConnectUI {
     }
 }
 function isMobileDevice() {
-    return R === "android"
+    return true
 }
 function isTouchDevice() {
     return "ontouchstart" in window || navigator.maxTouchPoints > 0
